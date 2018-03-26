@@ -42,10 +42,7 @@ mDb.prototype = {
   insertMany: function(dataObjArr,collectionName){
     this.connect();
     this.database.collection(collectionName).insertMany(dataObjArr, function(err, res){
-      if(err){
-        this.end();
-        throw err;
-      }
+      if(err) throw err;
       console.log('insert ' + dataObjArr.length + ' documents in ' + collectionName +'.');
     });
     this.end();
@@ -54,10 +51,7 @@ mDb.prototype = {
   search: function(searchPatternObj, collectionName){
     this.connect();
     var result = this.database.collection(collectionName).find(searchPatternObj).toArray(function(err, result){
-      if(err){
-        this.end();
-        throw err;
-      }
+      if(err) throw err;
       console.log("search result: " + result);
       return result;
     });
@@ -66,10 +60,7 @@ mDb.prototype = {
   },
   updateFirstOne: function(searchPatternObj, updatePatternObj, collectionName){
     this.database.collection(collectionName).updateOne(searchPatternObj, updatePatternObj, function(err, res){
-      if(err){
-        this.end();
-        throw err;
-      }
+      if(err) throw err;
       console.log('update success');
     })
     this.end();
@@ -77,10 +68,7 @@ mDb.prototype = {
   },
   updateAll: function(searchPatternObj, updatePatternObj, collectionName){
     this.database.collection(collectionName).updateMany(searchPatternObj, updatePatternObj, function(err, res){
-      if(err){
-        this.end();
-        throw err;
-      }
+      if(err) throw err;
       console.log(res.result.nModified + " documents were updated.");
     })
     this.end();
@@ -88,10 +76,7 @@ mDb.prototype = {
   },
   deleteFirstOne: function(searchPatternObj, collectionName){
     this.database.collection(collectionName).deleteOne(searchPatternObj, function(err, obj){
-      if(err){
-        this.end();
-        throw err;
-      }
+      if(err) throw err;
       console.log(obj + ' in ' + collectionName + ' is being deleted');
     });
     this.end();
@@ -99,28 +84,31 @@ mDb.prototype = {
   },
   deleteAll: function(searchPatternObj, collectionName){
     this.database.collection(collectionName).deleteMany(searchPatternObj, function(err, obj){
-      if(err){
-        this.end();
-        throw err;
-      }
+      if(err) throw err;
       console.log(obj.result.n + ' documents:  ' + obj + ' in ' + collectionName + ' are being deleted');
     });
     this.end();
     return this;
-  },//http://www.runoob.com/nodejs/nodejs-mongodb.html
+  },
   sort: function(type, searchPatternObj, collectionName){ //type: 1 -1
     var result = this.database.collection(collectionName).find(searchPatternObj).sort({type: type}).toArray(function(err, result){
-      if(err){
-        this.end();
-        throw err;
-      }
+      if(err) throw err;
       return result;
     });
     this.end();
     return result;
   },
-  limit: function(){
-    
+  limit: function(collectionName, limitArr){
+     // limitArr[skipNum, limitNum]
+    var result = this.database.connection(collectionName).skip(limitArr[0]).limit(limitArr[1]).toArray(function(err, result){
+      if(err){
+        this.end();
+        throw error;
+      }
+      return result;
+    });
+    this.end();
+    return result;
   }
 
 }
