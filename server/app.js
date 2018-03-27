@@ -4,6 +4,7 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('exoress-session');
 
 var app = express();
 
@@ -16,6 +17,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 require('./routes.js')(app);
+
+app.use(session({
+  secret: 'my app secret',
+  saveUninitialized: true,
+  resave: false,
+  cookie: {
+    maxAge: 10 * 1000
+  }
+}));
+
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

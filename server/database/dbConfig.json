@@ -1,4 +1,4 @@
 {
-  "url": "mongodb://localhost:27107",
+  "url": "mongodb://localhost:27017",
   "db": "clubMgr"
 }
