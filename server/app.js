@@ -4,7 +4,7 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var session = require('exoress-session');
+var session = require('express-session');
 
 var app = express();
 
@@ -14,7 +14,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+//global path
+global.prefixPath = path.resolve(__dirname);
 
 require('./routes.js')(app);
 
@@ -62,3 +63,7 @@ app.use(function(err, req, res, next) {
 app.listen(app.get('port'), function(){
 	console.log( 'express started on localhost:' + app.get('port') + 'press ctrl-c to terminate' );
 });
+
+var a = require('./model/login.js');
+var b = new a();
+console.log(b.getPassword('user1'));
