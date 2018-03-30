@@ -48,7 +48,7 @@ MyDb.prototype = {
       if(err) throw err;
       db.db(config.db).collection(collectionName).find(searchPatternObj).toArray(function(err, result){
         if(err) throw err;
-        console.log("search result: " + result);
+        //console.log("search result: " + result);
         console.log(result);
         db.close();
         if(callback)

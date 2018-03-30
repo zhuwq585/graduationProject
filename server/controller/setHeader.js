@@ -1,4 +1,4 @@
-//使得可以跨域访问
+//针对跨域访问设置http header
 exports.setHeader = function(res){
   res.header("Access-Control-Allow-Origin", "*");
 	res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');

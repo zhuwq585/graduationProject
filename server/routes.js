@@ -1,3 +1,4 @@
+//路由控制  调用相应的控制层方法
 var Userpermission = require('./controller/userPermission.js');
 
 module.exports = function(app){

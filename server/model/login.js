@@ -10,21 +10,29 @@ Login.prototype = {
       name: userName
     },this.collectionName, function(result){
       password = result[0].password;
-      callback();
+      if(callback)
+        callback(password);
     });
   },
   setCollectionName: function(type){
     if(type == 1){
-      this.collectionName = '';
+      this.collectionName = 'userStu';
     }else if(type == 2){
-      this.collectionName = '';
+      this.collectionName = 'mgrStu';
     }else {
       console.log('login type error');
     }
     return this;
   },
-  login: function(type, iUserName, iPassWord){
-    return this.setCollectionName(type).getPassword(iUserName) == iPassWord;
+  login: function(type, iUserName, iPassWord, callback){
+    this.setCollectionName(type).getPassword(iUserName,function(password){
+      var result = false;
+      if(password == iPassWord){
+        result = true;
+      }
+      if(callback)
+        callback(result);
+    })
   }
 }//https://www.cnblogs.com/mingjiatang/p/7495321.html
 module.exports =  Login;
