@@ -49,7 +49,7 @@ MyDb.prototype = {
       db.db(config.db).collection(collectionName).find(searchPatternObj).toArray(function(err, result){
         if(err) throw err;
         //console.log("search result: " + result);
-        console.log(result);
+        //console.log(result);
         db.close();
         if(callback)
           callback(result);
@@ -121,7 +121,7 @@ MyDb.prototype = {
     })
     return this;
   },
-  limit: function(collectionName, limitArr){
+  limit: function(collectionName, limitArr, callback){
      // limitArr[skipNum, limitNum]
      var config = this.config;
      this.connection.connect(this.config.url,function(err, db){
@@ -133,6 +133,13 @@ MyDb.prototype = {
        });
      })
      return this;
+  },
+  getNewId: function(collectionName, callback){
+    var config = this.config;
+    this.connection.connect(this.config.url,function(err, db){
+      if(err) throw err;
+      db.db(this.config.db).connection(collectionName)
+    })
   }
 }
 module.exports = MyDb;

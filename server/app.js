@@ -26,10 +26,12 @@ app.set('view engine', 'handlebars');
 
 app.use(session({
   secret: 'my app secret',
-  saveUninitialized: true,
+  saveUninitialized: false,
   resave: false,
   cookie: {
-    maxAge: 10 * 1000
+    maxAge: 10 * 1000,
+    singed: false,
+    httpOnly: true
   }
 }));
 
@@ -75,7 +77,3 @@ app.use(function(err, req, res, next) {
 app.listen(8080, function(){
 	console.log( 'express started on localhost:8080 press ctrl-c to terminate' );
 });
-
-// var a = require('./model/login.js');
-// var b = new a();
-// b.login(1,'user1','1223456',function(reslut){console.log(reslut)});

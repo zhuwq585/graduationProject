@@ -1,18 +1,12 @@
 //路由控制  调用相应的控制层方法
-var Userpermission = require('./controller/userPermission.js');
+var Userpermission = require('./controller/userPermission.js'),
+		UserMgr = require('./controller/userMgr.js');
 
 module.exports = function(app){
 	app.get('/login', Userpermission.login);
-	// app.get('/', blog.home);
-	// app.get('/resume', blog.resume);
-	// app.get('/article',blog.article);
-	// app.get('/list',blog.list);
-	//
-	// app.get('/admin',admin.admin);
-	// app.get('/admin/index',admin.admin);
-	// app.get('/admin/add',admin.add);
-	// app.get('/admin/lists',admin.lists);
-	// app.get('/admin/login',admin.login);
-	//
-	// app.get('/admin/addArticle',admin.addArticle);
+	app.get('/logout', Userpermission.logout);
+	app.get('/ifLog', Userpermission.ifLog);
+
+	app.get('/signUp', UserMgr.signUp);
+	app.get('/remove', UserMgr.remove);
 };

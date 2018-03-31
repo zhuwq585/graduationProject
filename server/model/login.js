@@ -1,7 +1,7 @@
-function Login(type){  //type 1:stu 2:mgr
+function Login(type){
   var temp = require('../database/db.js');
   this.db = new temp();
-  this.collectionName = 'userStu';
+  this.collectionName = '';
 }
 Login.prototype = {
   getPassword: function(userName, callback){
@@ -14,7 +14,7 @@ Login.prototype = {
         callback(password);
     });
   },
-  setCollectionName: function(type){
+  setCollectionName: function(type){ //type 1:stu 2:mgr
     if(type == 1){
       this.collectionName = 'userStu';
     }else if(type == 2){
@@ -34,5 +34,5 @@ Login.prototype = {
         callback(result);
     })
   }
-}//https://www.cnblogs.com/mingjiatang/p/7495321.html
+}
 module.exports =  Login;
