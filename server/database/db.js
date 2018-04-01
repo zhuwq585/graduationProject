@@ -43,7 +43,7 @@ MyDb.prototype = {
   },
   search: function(searchPatternObj, collectionName, callback){
     var config = this.config;
-
+    // console.log(searchPatternObj);
     this.connection.connect(config.url,function(err, db){
       if(err) throw err;
       db.db(config.db).collection(collectionName).find(searchPatternObj).toArray(function(err, result){
@@ -59,11 +59,12 @@ MyDb.prototype = {
   },
   updateFirstOne: function(searchPatternObj, updatePatternObj, collectionName, callback){
     var config = this.config;
-    this.connection.connect(config.url,function(err, db){
+    this.connection.connect(config.url, function(err, db){
       if(err) throw err;
       db.db(config.db).collection(collectionName).updateOne(searchPatternObj, updatePatternObj, function(err, res){
         if(err) throw err;
         console.log('update success');
+        db.close();
         if(callback)
           callback();
       })
@@ -77,6 +78,7 @@ MyDb.prototype = {
       db.db(config.db).collection(collectionName).updateMany(searchPatternObj, updatePatternObj, function(err, res){
         if(err) throw err;
         console.log(res.result.nModified + " documents were updated.");
+        db.close();
         if(callback)
           callback();
       })
@@ -87,9 +89,10 @@ MyDb.prototype = {
     var config = this.config;
     this.connection.connect(this.config.url,function(err, db){
       if(err) throw err;
-      db.db(this.config.db).collection(collectionName).deleteOne(searchPatternObj, function(err, obj){
+      db.db(config.db).collection(collectionName).deleteOne(searchPatternObj, function(err, obj){
         if(err) throw err;
         console.log(obj + ' in ' + collectionName + ' is being deleted');
+        db.close();
         if(callback)
           callback();
       });
@@ -103,6 +106,7 @@ MyDb.prototype = {
       db.db(config.db).collection(collectionName).deleteMany(searchPatternObj, function(err, obj){
         if(err) throw err;
         console.log(obj.result.n + ' documents:  ' + obj + ' in ' + collectionName + ' are being deleted');
+        db.close();
         if(callback)
           callback();
       });
@@ -115,6 +119,7 @@ MyDb.prototype = {
       if(err) throw err;
       db.db(config.db).collection(collectionName).find(searchPatternObj).sort({type: type}).toArray(function(err, result){
         if(err) throw err;
+        db.close();
         if(callback)
           callback(result);
       });
@@ -128,18 +133,12 @@ MyDb.prototype = {
        if(err) throw err;
        db.db(this.config.db).connection(collectionName).skip(limitArr[0]).limit(limitArr[1]).toArray(function(err, result){
          if(err)  throw error;
+         db.close();
          if(callback)
            callback(result);
        });
      })
      return this;
-  },
-  getNewId: function(collectionName, callback){
-    var config = this.config;
-    this.connection.connect(this.config.url,function(err, db){
-      if(err) throw err;
-      db.db(this.config.db).connection(collectionName)
-    })
   }
 }
 module.exports = MyDb;

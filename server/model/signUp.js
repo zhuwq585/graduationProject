@@ -15,12 +15,13 @@ SignUp.prototype = {
     return this;
   },
   signUp: function(dataObj, callback){
-    console.log(dataObj);
     var dbObj = this.db,
         thisObj = this;
-    this.db.setCollectionName(dataObj.type).search({
+    console.log(dataObj);
+    this.setCollectionName(dataObj.type);
+    dbObj.search({
       'userName': dataObj.userName
-    },function(result){
+    },thisObj.collectionName,function(result){
         var insertResult = false;
         delete dataObj.type;
         if(result.length == 0){
@@ -33,12 +34,13 @@ SignUp.prototype = {
   },
   remove: function(dataObj, callback){
     var thisObj = this;
-    this.db.setCollectionName(dataObj.type).deleteFirstOne({
+    this.setCollectionName(dataObj.type);
+    this.db.deleteFirstOne({
       'userName': dataObj.userName
     },thisObj.collectionName,function(){
       if(callback)
         callback();
     })
-  },
+  }
 }
 module.exports = SignUp;
