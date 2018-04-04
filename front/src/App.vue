@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <header-bar></header-bar>
+    <header-bar v-bind:isStu='isStu'
+                v-bind:isLogin='isLogin'
+                v-bind:userInfo = 'userInfo' v-on:loginCLick='login'
+                                             v-on:signUpCLick='signUp'
+                                             v-on:logoutClick='logout'
+                ></header-bar>
     <stu-nav v-if="isStu"></stu-nav>
     <mgr-nav v-if="!isStu"></mgr-nav>
     <router-view></router-view>
@@ -8,13 +13,13 @@
     <el-dialog title='登录' :visible.sync="dialogLoginVisible"
                             :show-close="false"
                             :close-on-press-escape="false"
-                            :close-on-click-modal="false">
+                            :close-on-click-modal="false" >
       <login></login>
     </el-dialog>
     <el-dialog title='注册' :visible.sync="dialogSignVisible"
                             :show-close="false"
                             :close-on-press-escape="false"
-                            :close-on-click-modal="false">
+                            :close-on-click-modal="false" >
       <sign-up></sign-up>
     </el-dialog>
   </div>
@@ -30,9 +35,13 @@ export default {
   name: 'App',
   data: function(){
     return{
-      isStu: false,
-      dialogLoginVisible: false,
-      dialogSignVisible: false
+      isStu: true,//身份标识
+      dialogLoginVisible: false, //控制登录对话框显示
+      dialogSignVisible: false,  //控制注册对话框显示
+      isLogin: false,
+      userInfo: {
+        name: 'name1'
+      }
     }
   },
   components: {
@@ -41,6 +50,17 @@ export default {
      'header-bar': Header,
      'login': login,
      'signUp': signUp
+  },
+  methods: {
+    login: function(){
+      this.dialogLoginVisible = true;
+    },
+    signUp: function(){
+      this.dialogSignVisible = true;
+    },
+    logout: function(){
+
+    }
   }
 }
 </script>

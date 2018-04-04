@@ -14,6 +14,8 @@ import 'reset.css'
 Vue.config.productionTip = true
 Vue.use(Element);
 Vue.prototype.$axios = axios;
+
+//router.push('/newsItem');
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
