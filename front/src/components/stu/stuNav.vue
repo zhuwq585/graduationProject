@@ -16,13 +16,13 @@ export default {
       // 路由参数
       menus: [{
         text: '资讯',
-        path: '/newsItem'
+        path: '/newsList'
       }, {
         text: '活动',
-        path: '/newsItem'
+        path: '/activityList'
       }, {
         text: '我的信息',
-        path: '/author'
+        path: '/stuInfor'
       }]
     }
   },
@@ -41,6 +41,8 @@ export default {
     width: 100%;
     height: 50px;
     border-top: 1px solid #eee;
+    background: white;
+    z-index: 9999;
 
     div.nav{
       display: inline-block;

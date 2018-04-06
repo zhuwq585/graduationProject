@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import newsItem from '@/components/stu/news/newsItem.vue'
+import newsList from '@/components/stu/news/newsList.vue'
+import newsContent from '@/components/stu/news/newsContent.vue'
+import activityList from '@/components/stu/activity/activityList.vue'
+import activityContent from '@/components/stu/activity/activityContent'
+
 
 Vue.use(Router)
 
@@ -15,15 +20,30 @@ const router = new Router({
       component: undefined
     },
     {
-      path: '/newsItem',
-      name: 'newsItem',
-      component: newsItem
+      path: '/newsList',
+      name: 'newsList',
+      component: newsList
+    },
+    {
+      path: '/newsContent',
+      name: 'newsContent',
+      component: newsContent
+    },
+    {
+      path: '/activityList',
+      name: 'activityList',
+      component: activityList
+    },
+    {
+      path: '/activityContent',
+      name: 'activityContent',
+      component: activityContent
     }
   ]
 });
 
-router.beforeEach((to, from, next) => {
-  store.dispatch('updateHistoryLength') // 变化时更新路由切换长度
-  next()
-});
+// router.beforeEach((to, from, next) => {
+//   store.dispatch('updateHistoryLength') // 变化时更新路由切换长度
+//   next()
+// });
 export default router;

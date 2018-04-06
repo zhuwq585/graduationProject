@@ -8,7 +8,9 @@
                 ></header-bar>
     <stu-nav v-if="isStu"></stu-nav>
     <mgr-nav v-if="!isStu"></mgr-nav>
-    <router-view></router-view>
+    <div class="routerView">
+      <router-view></router-view>
+    </div>
 
     <el-dialog title='登录' :visible.sync="dialogLoginVisible"
                             :show-close="false"
@@ -61,6 +63,9 @@ export default {
     logout: function(){
 
     }
+  },
+  created: function(){
+    this.$router.push('/newsList');
   }
 }
 </script>
@@ -72,5 +77,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 400px;
+}
+.routerView{
+  position: relative;
+  top: 30px;
 }
 </style>

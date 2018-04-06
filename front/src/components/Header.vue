@@ -45,6 +45,7 @@ export default {
     position: fixed;
     top: 0;
     background: rgb(134, 242, 138);
+    z-index: 9998;
 
     span.title,
     span.menu{
