@@ -22,7 +22,7 @@ export default {
         path: '/activityList'
       }, {
         text: '我的信息',
-        path: '/stuInfor'
+        path: '/myInfor'
       }]
     }
   },

@@ -39,6 +39,6 @@ export default {
     background: white;
     z-index: 9999;
     line-height: 31px;
-    border-radius: 15px;
+    //border-radius: 15px;
   }
 </style>

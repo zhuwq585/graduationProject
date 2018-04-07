@@ -5,6 +5,7 @@ import newsList from '@/components/stu/news/newsList.vue'
 import newsContent from '@/components/stu/news/newsContent.vue'
 import activityList from '@/components/stu/activity/activityList.vue'
 import activityContent from '@/components/stu/activity/activityContent'
+import myInfor from '@/components/stu/infor/myInfor.vue'
 
 
 Vue.use(Router)
@@ -38,6 +39,11 @@ const router = new Router({
       path: '/activityContent',
       name: 'activityContent',
       component: activityContent
+    },
+    {
+      path: '/myInfor',
+      name: 'myInfor',
+      component: myInfor
     }
   ]
 });
