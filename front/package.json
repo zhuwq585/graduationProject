@@ -15,7 +15,10 @@
     "reset.css": "^2.0.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
+    "tinymce": "^4.7.10",
     "vue": "^2.5.2",
+    "vue-awesome": "^3.0.0",
+    "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

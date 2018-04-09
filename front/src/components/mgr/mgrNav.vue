@@ -42,8 +42,11 @@ export default {
     height: 50px;
     border-top: 1px solid #eee;
 
+    display: flex;
+    flex-direction: row;
+
     div.nav{
-      display: inline-block;
+      display: flex;
       width: 25%;
       line-height: 50px;
 

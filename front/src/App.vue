@@ -42,7 +42,7 @@ export default {
       dialogSignVisible: false,  //控制注册对话框显示
       isLogin: false,
       userInfo: {
-        name: 'name1'
+        name: undefined
       }
     }
   },
@@ -72,6 +72,12 @@ export default {
 </script>
 
 <style>
+.el-collapse-item__header{
+  background: #F2F6FC;
+}
+.el-collapse-item__header{
+  overflow: hidden;;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -83,6 +89,10 @@ export default {
 .routerView{
   position: relative;
   top: 30px;
-  width: 100/}
+}
+.contentBox{
+  width: 96%;
+  margin: 0 auto;
+  padding: 5px;
+}
 </style>
- 

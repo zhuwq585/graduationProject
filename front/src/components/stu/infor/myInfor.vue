@@ -28,11 +28,5 @@ export default {
 </script>
 
 <style lang="scss">
-.myInfor{
-  overflow: hidden;
-}
-.el-collapse-item__header{
-  background: #F2F6FC
-;
-}
+
 </style>

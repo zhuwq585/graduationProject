@@ -12,7 +12,8 @@ import newsMgr from '@/components/mgr/news/newsMgr.vue'
 import activityMgr from '@/components/mgr/activity/activityMgr.vue'
 import userMgr from '@/components/mgr/user/userMgr.vue'
 import runningState from '@/components/mgr/data/runningState.vue'
-
+import mgrActivityContent from '@/components/mgr/activity/mgrActivityContent.vue'
+import mgrNewsContent from '@/components/mgr/news/mgrNewsContent.vue'
 Vue.use(Router)
 
 const router = new Router({
@@ -50,6 +51,8 @@ const router = new Router({
       name: 'myInfor',
       component: myInfor
     },
+
+
     {
       path: '/newsMgr',
       name: 'newsMgr',
@@ -69,6 +72,16 @@ const router = new Router({
       path: '/runningState',
       name: 'runningState',
       component: runningState
+    },
+    {
+      path: '/mgrActivityContent',
+      name: 'mgrActivityContent',
+      component: mgrActivityContent
+    },
+    {
+      path: '/mgrNewsContent',
+      name: 'mgrNewsContent',
+      component: mgrNewsContent
     }
   ]
 });

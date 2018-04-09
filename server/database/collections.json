@@ -1,0 +1,44 @@
+{
+  "userstu": [
+      {
+        "userName": "",
+        "password": "",
+        "phoneNum": "",
+        "email": "",
+        "activity": ["",""],
+        "applyTime": ""
+      }
+  ],
+  "mgrStu": [
+    {
+      "userName": "",
+      "password": ""
+    }
+  ],
+  "news": [
+    {
+      "title": "",
+      "date": "",
+      "content": "",
+      "img": "",
+      "id": ""
+    }
+  ],
+  "activity": [
+    {
+      "title": "",
+      "id": "",
+      "place": "",
+      "date": "",
+      "time": "",
+      "img": "",
+      "status": "",
+      "applied": [],
+      "signed": [],
+      "mgrCoordinate": {
+        "x": "",
+        "y": ""
+      }
+    }
+  ]
+}

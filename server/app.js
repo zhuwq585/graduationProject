@@ -74,12 +74,8 @@ app.use(function(err, req, res, next) {
 // app.listen(app.get('port'), function(){
 // 	console.log( 'express started on localhost:' + app.get('port') + 'press ctrl-c to terminate' );
 // });
-app.listen(8080, function(){
+app.listen(8081, function(){
 	console.log( 'express started on localhost:8080 press ctrl-c to terminate' );
 });
 
 // //
-// var a = require('./database/db.js');
-// var b = new a();
-// b.deleteFirstOne({'userName':'user3'},'userStu')
-//b.signUp({'userName':'user2','password':'123','type':1});
