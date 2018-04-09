@@ -37,7 +37,7 @@ export default {
   name: 'App',
   data: function(){
     return{
-      isStu: true,//身份标识
+      isStu: false,//身份标识
       dialogLoginVisible: false, //控制登录对话框显示
       dialogSignVisible: false,  //控制注册对话框显示
       isLogin: false,
@@ -63,10 +63,11 @@ export default {
     logout: function(){
 
     }
-  },
-  created: function(){
-    this.$router.push('/newsList');
   }
+  // ,
+  // created: function(){
+  //   this.$router.push('/newsList');
+  // }
 }
 </script>
 
@@ -82,5 +83,6 @@ export default {
 .routerView{
   position: relative;
   top: 30px;
-}
+  width: 100/}
 </style>
+ 

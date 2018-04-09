@@ -2,7 +2,7 @@
   <section class="nav">
     <!--v-for遍历路由-->
     <div class="nav" v-for='(m, index) in menus' :key='index'>
-      <router-link :to='setPaht(m.path)'><span>{{m.text}}</span></router-link>
+      <router-link :to='setPath(m.path)'><span>{{m.text}}</span></router-link>
     </div>
   </section>
 </template>
@@ -13,19 +13,22 @@ export default {
     return {
       // 路由参数
       menus: [{
-        text: '资讯发布',
-        path: '/select'
+        text: '资讯管理',
+        path: '/newsMgr'
       }, {
         text: '活动管理',
-        path: '/point'
+        path: '/activityMgr'
       }, {
         text: '用户管理',
-        path: '/author'
+        path: '/userMgr'
+      },{
+        text: '运行概况',
+        path: '/runningState'
       }]
     }
   },
   methods: {
-    setPaht (path) {
+    setPath (path) {
       return path
     }
   }
@@ -41,7 +44,7 @@ export default {
 
     div.nav{
       display: inline-block;
-      width: 33.333%;
+      width: 25%;
       line-height: 50px;
 
       a{

@@ -1,12 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+//stu
 import newsItem from '@/components/stu/news/newsItem.vue'
 import newsList from '@/components/stu/news/newsList.vue'
 import newsContent from '@/components/stu/news/newsContent.vue'
 import activityList from '@/components/stu/activity/activityList.vue'
 import activityContent from '@/components/stu/activity/activityContent'
 import myInfor from '@/components/stu/infor/myInfor.vue'
-
+//mgr
+import newsMgr from '@/components/mgr/news/newsMgr.vue'
+import activityMgr from '@/components/mgr/activity/activityMgr.vue'
+import userMgr from '@/components/mgr/user/userMgr.vue'
+import runningState from '@/components/mgr/data/runningState.vue'
 
 Vue.use(Router)
 
@@ -18,7 +23,7 @@ const router = new Router({
     {
       path: '/',
       name: 'HelloWorld',
-      component: undefined
+      component: newsMgr
     },
     {
       path: '/newsList',
@@ -44,6 +49,26 @@ const router = new Router({
       path: '/myInfor',
       name: 'myInfor',
       component: myInfor
+    },
+    {
+      path: '/newsMgr',
+      name: 'newsMgr',
+      component: newsMgr
+    },
+    {
+      path: '/activityMgr',
+      name: 'activityMgr',
+      component: activityMgr
+    },
+    {
+      path: '/userMgr',
+      name: 'userMgr',
+      component: userMgr
+    },
+    {
+      path: '/runningState',
+      name: 'runningState',
+      component: runningState
     }
   ]
 });
