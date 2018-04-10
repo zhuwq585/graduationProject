@@ -37,6 +37,16 @@ app.use(session({
 
 require('./routes.js')(app);
 
+//处理跨域请求中遇到的ｏｐｔｉｏｎ请求问题
+app.all('*',function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
+  res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+  res.header("X-Powered-By",' 3.2.1')
+  res.header("Content-Type", "application/json;charset=utf-8");
+  if (req.method == 'OPTIONS') res.send(200);
+  else next();
+});
 
 
 /// catch 404 and forwarding to error handler
@@ -74,8 +84,6 @@ app.use(function(err, req, res, next) {
 // app.listen(app.get('port'), function(){
 // 	console.log( 'express started on localhost:' + app.get('port') + 'press ctrl-c to terminate' );
 // });
-app.listen(8081, function(){
+app.listen(8082, function(){
 	console.log( 'express started on localhost:8080 press ctrl-c to terminate' );
 });
-
-// //

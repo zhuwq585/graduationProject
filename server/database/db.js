@@ -12,6 +12,29 @@ MyDb.prototype = {
     this.config.db = dbName;
     return this;
   },
+  insertOneP: function(dataObj, collectionName, callback){
+    var config = this.config,
+        dbObj = this;
+    this.connection.connect(config.url, function(err, db){
+      if(err) throw err;
+      db.db(config.db).collection("length").find({"name":collectionName}).toArray(function(err ,result){
+        if(err) throw err;
+        var newId = result[0]["length"] + 1;
+        dataObj.id = newId;
+        console.log(dataObj);
+        db.db(config.db).collection(collectionName).insertOne(dataObj, function(err, res){
+          if(err) throw err;
+          console.log(res);
+          db.db(config.db).collection("length").updateOne({"name":collectionName},{$set: {"length": newId}},function(err,res){
+            if(err) throw err;
+            db.close();
+          });
+          if(callback)
+            callback();
+        })
+      })
+    })
+  },
   insertOne: function(dataObj, collectionName, callback){
     var config = this.config;
     this.connection.connect(config.url,function(err, db){

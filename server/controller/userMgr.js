@@ -1,10 +1,8 @@
 //用户管理：  注册 查询 删除
-var signUpModel = require('../model/signUp.js'),
-    setHeader = require('./setHeader.js').setHeader;
+var signUpModel = require('../model/signUp.js');
 
 exports.signUp = function(req, res){
   var signUpObj = new signUpModel();
-  setHeader(res);
   signUpObj.signUp(req.query, function(result){
     if(result){
       res.json({

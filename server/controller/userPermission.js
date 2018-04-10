@@ -1,9 +1,7 @@
 //控制层组件   完成登录与登录状态验证
 var loginModel = require('../model/login.js');
-var setHeader = require('./setHeader.js').setHeader;
 
 exports.login = function(req, res){ //query body.....
-  setHeader(res);
   var loginObj = new loginModel();
   loginObj.login(req.query.userType,
               req.query.userName,

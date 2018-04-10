@@ -1,38 +1,38 @@
 {
-  "userstu": [
+  "user": [
       {
-        "userName": "",
-        "password": "",
-        "phoneNum": "",
-        "email": "",
-        "activity": ["",""],
-        "applyTime": ""
+        "userName": "user1",
+        "password": "user1psw",
+        "phoneNum": "13512345678",
+        "email": "xxx@hotmail,com",
+        "activity": [],
+        "applyTime": 0
       }
   ],
-  "mgrStu": [
+  "mgr": [
     {
-      "userName": "",
-      "password": ""
+      "userName": "root",
+      "password": "root"
     }
   ],
   "news": [
     {
-      "title": "",
-      "date": "",
-      "content": "",
+      "title": "开始运营",
+      "date": "2018年4月10日",
+      "content": "开始运营了开始运营了开始运营了",
       "img": "",
-      "id": ""
+      "id": "1"
     }
   ],
   "activity": [
     {
-      "title": "",
-      "id": "",
-      "place": "",
-      "date": "",
-      "time": "",
+      "title": "周末篮球训练营",
+      "id": "１",
+      "place": "净月校区篮球馆",
+      "date": "2018年4月20日",
+      "time": "18:00-20:00",
       "img": "",
-      "status": "",
+      "status": 0,
       "applied": [],
       "signed": [],
       "mgrCoordinate": {
@@ -40,5 +40,18 @@
         "y": ""
       }
     }
-  ]
+  ],
+  "length": [{
+    "name": "user",
+    "length": 1
+  },{
+    "name": "mgr",
+    "length": 1
+  },{
+    "name": "news",
+    "length": 1
+  },{
+    "name": "activity",
+    "length": 1
+  }]
 }
