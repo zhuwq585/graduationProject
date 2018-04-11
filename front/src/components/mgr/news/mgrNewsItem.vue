@@ -4,12 +4,12 @@
     <el-col :span="18">
       <el-row>
         <el-col>
-          <span class="title">标题</span>
+          <span class="title">{{data.title}}</span>
         </el-col>
       </el-row>
       <el-row>
         <el-col>
-          <span class="date">2018-04-06 11：30：00</span>
+          <span class="date">{{data.date}}</span>
         </el-col>
       </el-row>
       <el-row>
@@ -21,7 +21,7 @@
     <el-col :span="6">
       <el-row>
         <el-col class='tableCell'>
-          <img src="static/IMG_0468.jpg" alt="">
+          <img v-bind:src="data.img" alt="">
         </el-col>
       </el-row>
     </el-col>
@@ -31,9 +31,11 @@
 
 <script>
 export default {
+  props:['data'],
   methods: {
     goToContent: function(){
-      this.$router.push('/mgrNewsContent');
+      console.log(this.data);
+      this.$router.push('/mgrNewsContent?id='+this.data.id);
     }
   }
 }

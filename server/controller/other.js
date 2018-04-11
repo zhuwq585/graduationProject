@@ -1,7 +1,7 @@
-var imgUpload = require('../model/imgUpload.js');
-var b = new imgUpload();
+var temp = require('../model/imgUpload.js');
+var imgUpload = new temp();
 exports.imgUpload = function(req, res){
-  b.upload(req, function(result){
+  imgUpload.upload(req, function(result){
     if(result.status){
       res.json({url: result.url});
       res.end();

@@ -34,10 +34,7 @@ app.use(session({
     httpOnly: true
   }
 }));
-
-require('./routes.js')(app);
-
-//处理跨域请求中遇到的ｏｐｔｉｏｎ请求问题
+//处理跨域问题
 app.all('*',function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
@@ -47,6 +44,9 @@ app.all('*',function (req, res, next) {
   if (req.method == 'OPTIONS') res.send(200);
   else next();
 });
+require('./routes.js')(app);
+
+
 
 
 /// catch 404 and forwarding to error handler

@@ -74,7 +74,7 @@ const router = new Router({
       component: runningState
     },
     {
-      path: '/mgrActivityContent',
+      path: '/mgrActivityContent/:id',
       name: 'mgrActivityContent',
       component: mgrActivityContent
     },

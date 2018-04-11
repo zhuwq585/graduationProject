@@ -1,7 +1,8 @@
 //路由控制  调用相应的控制层方法
 var Userpermission = require('./controller/userPermission.js'),
 		UserMgr = require('./controller/userMgr.js'),
-		other = require('./controller/other.js');
+		other = require('./controller/other.js'),
+		news = require('./controller/newsContraller.js');
 
 module.exports = function(app){
 	app.get('/login', Userpermission.login);
@@ -12,4 +13,9 @@ module.exports = function(app){
 	app.get('/remove', UserMgr.remove);
 
 	app.post('/imgUpload', other.imgUpload);
+
+	app.post('/addNews', news.addNews);
+	app.get('/getNews', news.getNews);
+	app.get('/deleteNews', news.deleteNews);
+	app.get('/getNewsList', news.getNewsList);
 };

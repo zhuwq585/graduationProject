@@ -2,37 +2,76 @@
 <div class="newsContent">
   <el-row>
     <el-col>
-      <img src="static/IMG_0468.jpg" alt="">
+      <img v-bind:src="data.img" alt="">
     </el-col>
   </el-row>
   <el-row class="nContainer">
     <el-col :span="22" :push="1">
       <el-row>
         <el-col class="title">
-          标题
+          {{data.title}}
         </el-col>
       </el-row>
       <el-row>
-        <el-col class="date">日期</el-col>
+        <el-col class="date">{{data.date}}</el-col>
       </el-row>
       <el-row>
-        <el-col class="content">正文</el-col>
+        <el-col class="content" v-html="data.content"></el-col>
       </el-row>
     </el-col>
   </el-row>
 
-  <div class="returnBtn" @click='back'>
-    <el-button type="primary" size="mini" round>返回</el-button>
+  <div class="returnBtn">
+    <el-button type="primary" size="mini"  @click='back' round>返回</el-button>
+    <el-button type="primary" size="mini"　@click="deleteNews" round>删除</el-button>
+
   </div>
+
 </div>
 </template>
 
 <script>
+import $ from 'jquery'
 export default {
+  data(){
+    return{
+        data: ''
+    }
+  },
   methods: {
     back: function(){
+      //console.log(this.$route.query.id);
       this.$router.push('/newsMgr');
+    },
+    getData: function(){
+      var vueObj = this;
+      $.ajax({
+        url: 'http://127.0.0.1:8082/getNews',
+        data: {
+          id: vueObj.$route.query.id
+        },
+        success: function(response){
+          console.log(response);
+          vueObj.data = response;
+        }
+      })
+    },
+    deleteNews: function(){
+      var vueObj = this;
+      $.ajax({
+        url: 'http://127.0.0.1:8082/deleteNews',
+        data: {
+          id: vueObj.data.id
+        },
+        success: function(response){
+          console.log(response);
+          vueObj.$router.push('/newsMgr');
+        }
+      })
     }
+  },
+  created: function(){
+    this.getData();
   }
 }
 </script>

@@ -21,10 +21,10 @@ MyDb.prototype = {
         if(err) throw err;
         var newId = result[0]["length"] + 1;
         dataObj.id = newId;
-        console.log(dataObj);
+        //console.log(dataObj);
         db.db(config.db).collection(collectionName).insertOne(dataObj, function(err, res){
           if(err) throw err;
-          console.log(res);
+          //console.log(res);
           db.db(config.db).collection("length").updateOne({"name":collectionName},{$set: {"length": newId}},function(err,res){
             if(err) throw err;
             db.close();
@@ -39,7 +39,7 @@ MyDb.prototype = {
     var config = this.config;
     this.connection.connect(config.url,function(err, db){
       if(err) throw err;
-      console.log('connected.');
+      //console.log('connected.');
       db.db(config.db).collection(collectionName).insertOne(dataObj,function(err, res){
         if(err)  throw err;
         console.log('insert one in ' + collectionName + ' success');
@@ -70,6 +70,7 @@ MyDb.prototype = {
     this.connection.connect(config.url,function(err, db){
       if(err) throw err;
       db.db(config.db).collection(collectionName).find(searchPatternObj).toArray(function(err, result){
+        console.log(searchPatternObj);
         if(err) throw err;
         //console.log("search result: " + result);
         //console.log(result);
